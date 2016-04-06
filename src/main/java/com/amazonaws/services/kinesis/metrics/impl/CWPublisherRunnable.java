@@ -113,12 +113,12 @@ public class CWPublisherRunnable<KeyType> implements Runnable {
             if (timeSinceFlush >= bufferTimeMillis || queue.size() >= flushSize || shuttingDown) {
                 dataToPublish = queue.drain(flushSize);
                 if (LOG.isDebugEnabled()) {
-                    LOG.debug(String.format("Drained %d datums from queue", dataToPublish.size()));
+                    LOG.debug(String.format("Drained %d data from queue", dataToPublish.size()));
                 }
 
                 if (shuttingDown) {
                     if (LOG.isDebugEnabled()) {
-                        LOG.debug(String.format("Shutting down with %d datums left on the queue", queue.size()));
+                        LOG.debug(String.format("Shutting down with %d data left on the queue", queue.size()));
                     }
 
                     // If we're shutting down, we successfully shut down only when the queue is empty.
@@ -127,7 +127,7 @@ public class CWPublisherRunnable<KeyType> implements Runnable {
             } else {
                 long waitTime = bufferTimeMillis - timeSinceFlush;
                 if (LOG.isDebugEnabled()) {
-                    LOG.debug(String.format("Waiting up to %dms for %d more datums to appear.", waitTime, flushSize
+                    LOG.debug(String.format("Waiting up to %dms for %d more data to appear.", waitTime, flushSize
                             - queue.size()));
                 }
 
@@ -186,7 +186,7 @@ public class CWPublisherRunnable<KeyType> implements Runnable {
             }
 
             if (LOG.isDebugEnabled()) {
-                LOG.debug(String.format("Enqueueing %d datums for publication", data.size()));
+                LOG.debug(String.format("Enqueueing %d data for publication", data.size()));
             }
 
             for (MetricDatumWithKey<KeyType> datumWithKey : data) {

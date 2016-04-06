@@ -27,7 +27,7 @@ public interface ICWMetricsPublisher<KeyType> {
 
     /**
      * Given a list of MetricDatumWithKey, this method extracts the MetricDatum from each
-     * MetricDatumWithKey and publishes those datums.
+     * MetricDatumWithKey and publishes those data.
      * 
      * @param dataToPublish a list containing all the MetricDatums to publish
      */
